@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseTextStyle" parent="android:TextAppearance" />
+
+    <!-- main -->
+    <style name="TextStyle.Title" parent="BaseTextStyle">
+        <item name="android:textSize">26dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.SubTitle" parent="BaseTextStyle">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.Content" parent="BaseTextStyle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.SubContent" parent="BaseTextStyle">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- item -->
+    <style name="TextStyle.ItemTitle" parent="BaseTextStyle">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.ItemContent" parent="BaseTextStyle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_hobbyCheckFragment"
+            app:destination="@id/hobbyCheckFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hobbyCheckFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.HobbyCheckFragment"
+        android:label="HobbyCheckFragment"
+        tools:layout="@layout/fragment_hobby_check">
+        <action
+            android:id="@+id/action_hobbyCheckFragment_to_hobbyRecommendFragment"
+            app:destination="@id/hobbyRecommendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hobbyRecommendFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.HobbyRecommendFragment"
+        android:label="HobbyRecommendFragment"
+        tools:layout="@layout/fragment_hobby_recommend" />
+</navigation>

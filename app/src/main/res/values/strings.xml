@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">우리의숲</string>
+
+    <string name="login_content">같은 취향을 가진 사람들이\n모인 취향 둥지에 모여보세요!</string>
+    <string name="login_nest_talk">둥지talk에서\n얘기해!</string>
+
+    <string name="start_kakao_talk">카카오톡으로 시작하기</string>
+
+    <string name="hobby_check_title">당신은\n어떤 취미를 가진\n사람인가요?</string>
+    <string name="hobby_check_button_title">거래 내역 연결하고 내 취미 알아보기</string>
+    <string name="hobby_no_check_start"><u>연결안하고 바로 시작하기</u></string>
+    <string name="hobby_check_content">거래내역을 연결해주시면,\n취미 전문가 ‘우리의 숲\'이\n당신의 취미 취향을 분석해드릴게요!</string>
+
+    <string name="format_recommend_hobby_title">%s님의\n 취미 추출 완료!</string>
+    <string name="format_recommend_hobby_content">%s님의 취미는 %s로 추출되었어요.\n가장 관심있는 취미 1가지를 선택해주세요!</string>
+    <string name="hobby_recommend_join">나만의 취미 기반 모임, 둥지 가입하러가기</string>
+    <string name="share_my_hobby_result">내 취미 결과 공유하기</string>
+    <string name="share_kakao">카톡으로 공유하기</string>
+    <string name="extract_again">추출 다시하기</string>
+</resources>
