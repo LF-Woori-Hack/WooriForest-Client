@@ -63,8 +63,17 @@
         android:id="@+id/nestServiceGuideFragment"
         android:name="mashup.littleforest.wooriforest.ui.fragment.NestServiceGuideFragment"
         android:label="NestServiceGuideFragment"
-        tools:layout="@layout/fragment_nest_service_guide" />
+        tools:layout="@layout/fragment_nest_service_guide">
+        <action
+            android:id="@+id/action_nestServiceGuideFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
     <action
         android:id="@+id/action_global_nestServiceGuideFragment"
         app:destination="@id/nestServiceGuideFragment" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.WebViewFragment"
+        android:label="WebViewFragment"
+        tools:layout="@layout/fragment_web_view" />
 </navigation>

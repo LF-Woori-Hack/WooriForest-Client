@@ -31,5 +31,7 @@
 
     <string name="nest_service_guide_title">취미 용돈모으기\n서비스란?</string>
     <string name="nest_service_guide_content">사고싶은 취미용품이 있다면, 차곡차곡 조금씩 취미 용돈 모으기!\n우리의 숲에서 딱 200일만 같이 모아볼까요?</string>
+    <string name="make_save_account">적금 상품 가입 하러 가기</string>
+    <string name="register_pocket_money">용돈 모으기 등록</string>
 
 </resources>

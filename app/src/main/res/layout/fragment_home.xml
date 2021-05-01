@@ -148,7 +148,7 @@
                             android:layout_height="36dp"
                             android:background="@drawable/bg_gray_everyday_save"
                             android:gravity="center"
-                            android:text="매일 조금씩 적금해서 꼭 구입한다..!"
+                            android:text="조금씩 적금해서 꼭 구입한다..!"
                             android:textColor="@color/black"
                             android:textSize="14dp"
                             android:textStyle="bold" />
