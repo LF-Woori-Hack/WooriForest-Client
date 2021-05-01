@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
-import com.tistory.blackjinbase.ext.toast
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.databinding.FragmentWebViewBinding
@@ -42,7 +41,7 @@ class WebViewFragment : WFFragment<FragmentWebViewBinding>(R.layout.fragment_web
 
     private fun initButton() {
         binding.btnRegisterPocketMoney.setOnClickListener {
-            toast("등록")
+            navigate(R.id.action_webViewFragment_to_pocketMoneyRegisterFragment)
         }
     }
 }

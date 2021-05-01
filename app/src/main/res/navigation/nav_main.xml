@@ -75,5 +75,14 @@
         android:id="@+id/webViewFragment"
         android:name="mashup.littleforest.wooriforest.ui.fragment.WebViewFragment"
         android:label="WebViewFragment"
-        tools:layout="@layout/fragment_web_view" />
+        tools:layout="@layout/fragment_web_view">
+        <action
+            android:id="@+id/action_webViewFragment_to_pocketMoneyRegisterFragment"
+            app:destination="@id/pocketMoneyRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pocketMoneyRegisterFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.PocketMoneyRegisterFragment"
+        android:label="PocketMoneyRegisterFragment"
+        tools:layout="@layout/fragment_pocket_money_register" />
 </navigation>
