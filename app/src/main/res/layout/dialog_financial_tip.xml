@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="296dp"
+            android:layout_height="454dp"
+            android:layout_gravity="center"
+            android:background="@drawable/financial_dialog">
+
+            <FrameLayout
+                android:id="@+id/btn_cancel"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="end" />
+
+            <FrameLayout
+                android:id="@+id/btn_join"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="25dp" />
+        </FrameLayout>
+    </FrameLayout>
+</layout>

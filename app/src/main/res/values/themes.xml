@@ -16,4 +16,19 @@
         <!--Status Bar 글자색깔-->
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+    <style name="dialog_fullscreen" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <!-- status bar -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!-- 배경 dim 설정 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 0.0 (투명) ~ 1.0 (검정색) 값을 가집니다 -->
+        <item name="android:backgroundDimAmount">0.5</item>
+
+    </style>
 </resources>

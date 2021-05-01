@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.databinding.FragmentHomeBinding
+import mashup.littleforest.wooriforest.ui.dialog.FinancialTipFragmentDialog
 
 class HomeFragment :
     WFFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -15,6 +16,7 @@ class HomeFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        showFinancialDialog()
     }
 
     private fun initView() {
@@ -24,5 +26,11 @@ class HomeFragment :
 
         binding.ivItemNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.circle_gray))
         binding.tvItemNestTitle.text = "헐크버스터 MMS510 정품 \n" + "마블 어벤져스-아이디스타"
+    }
+
+    private fun showFinancialDialog() {
+        fragmentManager?.let {
+            FinancialTipFragmentDialog().show(it, FinancialTipFragmentDialog.TAG)
+        }
     }
 }
