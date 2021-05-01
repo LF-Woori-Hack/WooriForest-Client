@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <mashup.littleforest.wooriforest.ui.customfont.SunflowerBoldTextView
                 android:id="@+id/tv_title"
                 style="@style/TextStyle.Title"
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             android:layout_marginTop="4dp"
             android:fillViewport="true"
             android:overScrollMode="never"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_go_to_join_hobby"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_top">

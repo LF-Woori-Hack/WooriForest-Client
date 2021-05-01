@@ -46,7 +46,7 @@
                     android:src="@drawable/ic_clover" />
             </LinearLayout>
 
-            <TextView
+            <mashup.littleforest.wooriforest.ui.customfont.SunflowerBoldTextView
                 style="@style/TextStyle.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 android:background="@drawable/drawable_rect_yellow_rad_25"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="# 나도 몰랐던 나의 취미"
+                android:text="# 이렇게 사소한 것도 취미?!"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />

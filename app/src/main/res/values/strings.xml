@@ -5,6 +5,7 @@
     <string name="login_nest_talk">둥지talk에서\n얘기해!</string>
 
     <string name="start_kakao_talk">카카오톡으로 시작하기</string>
+    <string name="ok">확인</string>
 
     <string name="hobby_check_title">당신은\n어떤 취미를 가진\n사람인가요?</string>
     <string name="hobby_check_button_title">거래 내역 연결하고 내 취미 알아보기</string>
@@ -17,4 +18,15 @@
     <string name="share_my_hobby_result">내 취미 결과 공유하기</string>
     <string name="share_kakao">카톡으로 공유하기</string>
     <string name="extract_again">추출 다시하기</string>
+
+    <string name="format_recommend_nest_title">%s님을 위한\n <u>%s</u> 취미 둥지 추천</string>
+    <string name="join_nest">둥지 가입하기</string>
+
+    <string name="format_complete_nest_title">%s님\n취미 둥지 가입 완료</string>
+    <string name="format_complete_nest_content">%s님 환영합니다.\n취미 둥지에서 행복한 취미 생활하세요!</string>
+
+    <string name="hobby_tip_title">취미생활 꿀팁</string>
+    <string name="hobby_tip_content">취미도 건강한 금융생활의 일부!\n취미 자금을 여윳돈으로 미리 준비하면\n건강한 취미 금융생활이 가능해진답니다.</string>
+    <string name="tip">🍯tip</string>
+
 </resources>

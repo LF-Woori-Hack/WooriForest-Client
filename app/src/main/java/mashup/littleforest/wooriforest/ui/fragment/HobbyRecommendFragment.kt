@@ -36,7 +36,7 @@ class HobbyRecommendFragment :
 
     private fun initButton() {
         binding.btnGoToJoinHobby.setOnClickListener {
-            toast("둥지 가입하러 가기")
+            navigate(R.id.action_hobbyRecommendFragment_to_nestRecommendFragment)
         }
 
         binding.btnShareKakao.setOnClickListener {

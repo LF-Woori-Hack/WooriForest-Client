@@ -27,5 +27,32 @@
         android:id="@+id/hobbyRecommendFragment"
         android:name="mashup.littleforest.wooriforest.ui.fragment.HobbyRecommendFragment"
         android:label="HobbyRecommendFragment"
-        tools:layout="@layout/fragment_hobby_recommend" />
+        tools:layout="@layout/fragment_hobby_recommend">
+        <action
+            android:id="@+id/action_hobbyRecommendFragment_to_nestRecommendFragment"
+            app:destination="@id/nestRecommendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nestRecommendFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.NestRecommendFragment"
+        android:label="NestRecommendFragment"
+        tools:layout="@layout/fragment_nest_recommend">
+        <action
+            android:id="@+id/action_nestRecommendFragment_to_nestCompleteFragment"
+            app:destination="@id/nestCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nestCompleteFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.NestCompleteFragment"
+        android:label="NestCompleteFragment"
+        tools:layout="@layout/fragment_nest_complete">
+        <action
+            android:id="@+id/action_nestCompleteFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
 </navigation>
