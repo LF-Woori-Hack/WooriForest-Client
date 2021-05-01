@@ -38,4 +38,6 @@
     <string name="pocket_money_register_title">취미 용돈모으기\n가입하기</string>
     <string name="pocket_money_register_content">취미를 위한 용돈을 차곡차곡 모아볼까요?</string>
 
+    <string name="format_item_price">가격 : %d원</string>
+
 </resources>

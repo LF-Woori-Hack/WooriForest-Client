@@ -63,26 +63,38 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
-                android:layout_marginTop="12dp">
+                android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/et_hobby_item_goal"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_hobby_item_goal"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="취미 용돈 모으기 목표"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+                    android:layout_height="66dp"
+                    android:layout_marginTop="12dp">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/et_hobby_item_goal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="사고 싶은 취미 용품명"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/btn_search_shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_pocket_money_goal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="66dp"
@@ -102,6 +114,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_promise"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="66dp"

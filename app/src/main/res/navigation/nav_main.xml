@@ -84,5 +84,17 @@
         android:id="@+id/pocketMoneyRegisterFragment"
         android:name="mashup.littleforest.wooriforest.ui.fragment.PocketMoneyRegisterFragment"
         android:label="PocketMoneyRegisterFragment"
-        tools:layout="@layout/fragment_pocket_money_register" />
+        tools:layout="@layout/fragment_pocket_money_register">
+        <action
+            android:id="@+id/action_pocketMoneyRegisterFragment_to_naverShopListFragment"
+            app:destination="@id/naverShopListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/naverShopListFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.NaverShopListFragment"
+        android:label="NaverShopListFragment"
+        tools:layout="@layout/fragment_naver_shop_list" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
 </navigation>

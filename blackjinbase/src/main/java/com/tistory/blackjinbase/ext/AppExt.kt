@@ -84,8 +84,7 @@ fun Activity.showSoftKeyBoard() {
 
 fun FragmentActivity.showSoftKeyBoard() {
     val view = currentFocus
-    val imm =
-        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.showSoftInput(view, InputMethodManager.SHOW_FORCED)
 }
 
@@ -98,8 +97,7 @@ fun Activity.hideSoftKeyBoard() {
 
 fun FragmentActivity.hideSoftKeyBoard() {
     val view = currentFocus
-    val imm =
-        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     view?.clearFocus()
 }
