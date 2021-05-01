@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.tistory.blackjinbase.ext.toast
+import androidx.navigation.fragment.findNavController
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.databinding.DialogFinancialTipBinding
 
@@ -43,7 +43,8 @@ class FinancialTipFragmentDialog : DialogFragment() {
         }
 
         binding.btnJoin.setOnClickListener {
-            toast("가입하러 가기")
+            findNavController().navigate(R.id.action_global_nestServiceGuideFragment)
+            dismiss()
         }
     }
 }

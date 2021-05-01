@@ -54,5 +54,17 @@
         android:id="@+id/homeFragment"
         android:name="mashup.littleforest.wooriforest.ui.fragment.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_nestServiceGuideFragment"
+            app:destination="@id/nestServiceGuideFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nestServiceGuideFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.NestServiceGuideFragment"
+        android:label="NestServiceGuideFragment"
+        tools:layout="@layout/fragment_nest_service_guide" />
+    <action
+        android:id="@+id/action_global_nestServiceGuideFragment"
+        app:destination="@id/nestServiceGuideFragment" />
 </navigation>

@@ -21,11 +21,21 @@ class HomeFragment :
 
     private fun initView() {
         binding.ivNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_img_bird))
-        binding.tvNest.text = "#마블 피규어 둥지"
-        binding.tvNestTitle.text = "용돈모으기"
+        binding.tvNest.text = "#우리의 숲"
+        binding.tvNestTitle.text = "우리의 숲"
 
-        binding.ivItemNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.circle_gray))
-        binding.tvItemNestTitle.text = "헐크버스터 MMS510 정품 \n" + "마블 어벤져스-아이디스타"
+        binding.ivItemNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.img_add_circle_outline_white))
+        binding.tvItemNestTitle.text = "취미모으기 \n" + "등록하러가기"
+
+        binding.tvSaveMission.text = "하루 N만원씩"
+        binding.tvCheerCount.text = "0"
+
+        binding.tvPrice.text = "0원"
+        binding.tvPriceDetail.text = "목표금액을 정할 수 있어요!"
+
+        binding.btnRegisterSaveMoney.setOnClickListener {
+            navigate(R.id.action_homeFragment_to_nestServiceGuideFragment)
+        }
     }
 
     private fun showFinancialDialog() {

@@ -20,7 +20,8 @@ class LoginFragment : WFFragment<FragmentLoginBinding>(R.layout.fragment_login) 
 
     private fun initButton() {
         binding.btnKakaoLogin.setOnClickListener {
-            kakaoLogin()
+            //TODO kakaoLogin()
+            goToHobbyCheck()
         }
     }
 

@@ -93,6 +93,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/btn_register_save_money"
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:layout_marginTop="10dp"
@@ -132,7 +133,7 @@
                             android:id="@+id/iv_item_nest"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            tools:background="@drawable/circle_gray" />
+                            tools:src="@drawable/circle_gray" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -143,7 +144,6 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tv_everyday_save"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
                             android:background="@drawable/bg_gray_everyday_save"
@@ -180,11 +180,12 @@
                                         android:textStyle="bold" />
 
                                     <TextView
+                                        android:id="@+id/tv_save_mission"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="하루 1만원씩"
                                         android:textColor="@color/black"
-                                        android:textSize="14dp" />
+                                        android:textSize="14dp"
+                                        tools:text="하루 1만원씩" />
                                 </LinearLayout>
 
                                 <ImageView
@@ -221,11 +222,12 @@
                                         android:textStyle="bold" />
 
                                     <TextView
+                                        android:id="@+id/tv_cheer_count"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="100"
                                         android:textColor="@color/black"
-                                        android:textSize="14dp" />
+                                        android:textSize="14dp"
+                                        tools:text="100" />
                                 </LinearLayout>
 
                                 <ImageView
@@ -249,19 +251,21 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="400,000원"
                             android:textColor="@color/white"
                             android:textSize="26dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="400,000원" />
 
                         <TextView
+                            android:id="@+id/tv_price_detail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="목표 금액 2,000,000원 | 25% 달성 | 모으기 내역"
                             android:textColor="@color/white"
-                            android:textSize="12dp" />
+                            android:textSize="12dp"
+                            tools:text="목표 금액 2,000,000원 | 25% 달성 | 모으기 내역" />
                     </LinearLayout>
 
                     <TextView

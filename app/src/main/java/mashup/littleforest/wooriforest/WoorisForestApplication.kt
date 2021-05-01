@@ -28,8 +28,7 @@ class WoorisForestApplication : Application() {
     }
 
     @SuppressLint("HardwareIds")
-    private fun getDeviceUUid() =
-        Settings.Secure.getString(instance.contentResolver, Settings.Secure.ANDROID_ID)
+    private fun getDeviceUUid() = Settings.Secure.getString(instance.contentResolver, Settings.Secure.ANDROID_ID)
 
     private fun initDlog() {
         Dlog.initDebug(BuildConfig.DEBUG)
@@ -41,11 +40,5 @@ class WoorisForestApplication : Application() {
 
     private fun initKakaoLogin() {
         KakaoSdk.init(this, "2c654b1de0826cb908fb1388a84c0a9b")
-        // SDK 초기화
-        /*KakaoSDK.init(object : KakaoAdapter() {
-            override fun getApplicationConfig(): IApplicationConfig {
-                return IApplicationConfig { this@WoorisForestApplication }
-            }
-        })*/
     }
 }
