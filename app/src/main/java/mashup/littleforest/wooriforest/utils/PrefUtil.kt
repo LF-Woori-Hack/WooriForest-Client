@@ -9,6 +9,12 @@ object PrefUtil {
 
     private lateinit var pref: SharedPreferences
 
+    /**
+     * Bearer {token} 값으로 저장합니다.
+     */
+    const val PREF_ACCESS_TOKEN = "access_token"
+    const val PREF_REFRESH_TOKEN = "refresh_token"
+
     fun init(context: Context) {
         pref = context.applicationContext.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
