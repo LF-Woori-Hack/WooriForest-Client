@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.tistory.blackjinbase.ext.toast
+import com.tistory.blackjinbase.util.Dlog
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.databinding.FragmentHomeBinding
@@ -45,8 +46,80 @@ class HomeFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initView()
-        showFinancialDialog()
+        arguments?.let {
+            val isReload = HomeFragmentArgs.fromBundle(it).reload
+            Dlog.d("isReload : $isReload")
+            if (isReload) {
+                loadData()
+            } else {
+                showFinancialDialog()
+            }
+        }
+    }
+
+    private fun loadData() {
+        fetch {
+            val result = wooriApi.getNest()
+            Dlog.d("result : $result")
+
+            binding.ivNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_img_bird))
+            binding.tvNest.text = "#우리의 숲"
+            binding.tvNestTitle.text = "용돈모으기"
+
+            binding.ivItemNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.img_add_circle_outline_white))
+            binding.tvItemNestTitle.text = result.query
+
+            binding.tvSaveMission.text = "하루 ${result.monthlyPayment}만원씩"
+            binding.tvCheerCount.text = "${result.cheeringCount}"
+
+            binding.tvPrice.text = "${result.currentAmount}"
+
+            val goal = result.goalAmount?.toInt() ?: 1
+            val current = result.currentAmount?.toInt() ?: 1
+            val percent = current / goal * 100 //  0 ~ 100 %
+
+            binding.tvPriceDetail.text = "목표금액 ${result.goalAmount}원 | ${percent}% 달성 | 모으기 내역"
+
+            binding.ivMissionStamp1.visibility = View.INVISIBLE
+            binding.ivMissionStamp2.visibility = View.INVISIBLE
+            binding.ivMissionStamp3.visibility = View.INVISIBLE
+            binding.ivMissionStamp4.visibility = View.INVISIBLE
+            binding.ivMissionStamp5.visibility = View.INVISIBLE
+
+            when {
+                percent >= 20 -> {
+                    binding.ivMissionStamp1.visibility = View.VISIBLE
+                }
+                percent in 21..40 -> {
+                    binding.ivMissionStamp1.visibility = View.VISIBLE
+                    binding.ivMissionStamp2.visibility = View.VISIBLE
+                }
+                percent in 41..60 -> {
+                    binding.ivMissionStamp1.visibility = View.VISIBLE
+                    binding.ivMissionStamp2.visibility = View.VISIBLE
+                    binding.ivMissionStamp3.visibility = View.VISIBLE
+                }
+                percent in 61..80 -> {
+                    binding.ivMissionStamp1.visibility = View.VISIBLE
+                    binding.ivMissionStamp2.visibility = View.VISIBLE
+                    binding.ivMissionStamp3.visibility = View.VISIBLE
+                    binding.ivMissionStamp3.visibility = View.VISIBLE
+                }
+                percent > 80 -> {
+                    binding.ivMissionStamp1.visibility = View.VISIBLE
+                    binding.ivMissionStamp2.visibility = View.VISIBLE
+                    binding.ivMissionStamp3.visibility = View.VISIBLE
+                    binding.ivMissionStamp3.visibility = View.VISIBLE
+                    binding.ivMissionStamp3.visibility = View.VISIBLE
+                }
+            }
+
+            binding.btnRegisterSaveMoney.setOnClickListener {
+                //..
+            }
+        }
     }
 
     override fun onDetach() {
@@ -57,7 +130,7 @@ class HomeFragment :
     private fun initView() {
         binding.ivNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_img_bird))
         binding.tvNest.text = "#우리의 숲"
-        binding.tvNestTitle.text = "우리의 숲"
+        binding.tvNestTitle.text = "용돈모으기"
 
         binding.ivItemNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.img_add_circle_outline_white))
         binding.tvItemNestTitle.text = "취미모으기 \n" + "등록하러가기"

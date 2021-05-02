@@ -9,7 +9,7 @@ interface NaverShopApi {
     @GET("search/shop.json")
     suspend fun shop(
         @Query("query") query: String,
-        @Query("display") display: Int = 10,
+        @Query("display") display: Int = 100,
         @Query("start") start: Int = 1,
         @Query("sort") sort: String = "sim"
     ): ShopResponse

@@ -78,8 +78,8 @@ class PocketMoneyRegisterFragment
                 return@setOnClickListener
             }
 
-            //TODO 홈으로 이동할때 데이터 필요
-            navigate(R.id.action_global_homeFragment)
+            val direction = HomeFragmentDirections.actionGlobalHomeFragment(true)
+            navigate(direction)
 
             return@setOnClickListener
 

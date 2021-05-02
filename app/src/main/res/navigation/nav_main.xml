@@ -67,6 +67,10 @@
         android:name="mashup.littleforest.wooriforest.ui.fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
+        <argument
+            android:name="reload"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/nestServiceGuideFragment"

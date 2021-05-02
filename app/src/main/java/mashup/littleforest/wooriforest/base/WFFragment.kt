@@ -54,6 +54,7 @@ abstract class WFFragment<B : ViewDataBinding>(
                 hideLoadingDialog()
             } catch (e: Exception) {
                 Dlog.e(e.message)
+                hideLoadingDialog()
             }
         }
     }

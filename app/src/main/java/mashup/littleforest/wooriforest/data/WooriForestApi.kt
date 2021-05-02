@@ -5,6 +5,7 @@ import mashup.littleforest.wooriforest.data.model.request.LinkTransRequest
 import mashup.littleforest.wooriforest.data.model.request.LoginRequest
 import mashup.littleforest.wooriforest.data.model.response.LinkTransItem
 import mashup.littleforest.wooriforest.data.model.response.LoginResponse
+import mashup.littleforest.wooriforest.data.model.response.NestResponse
 import mashup.littleforest.wooriforest.data.model.response.SuccessResponse
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -36,4 +37,7 @@ interface WooriForestApi {
     suspend fun join(
         request: JoinRequest
     ): List<SuccessResponse>
+
+    @GET("/v1/saving")
+    suspend fun getNest(): NestResponse
 }
