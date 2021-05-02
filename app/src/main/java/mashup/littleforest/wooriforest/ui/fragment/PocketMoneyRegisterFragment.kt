@@ -5,10 +5,15 @@ import android.os.Bundle
 import android.text.Html
 import android.text.TextUtils
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.tistory.blackjinbase.ext.toast
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
+import mashup.littleforest.wooriforest.data.CashData
 import mashup.littleforest.wooriforest.data.model.request.JoinRequest
+import mashup.littleforest.wooriforest.data.model.response.NestResponse
 import mashup.littleforest.wooriforest.databinding.FragmentPocketMoneyRegisterBinding
 import mashup.littleforest.wooriforest.ui.model.ItemShop
 
@@ -16,6 +21,8 @@ class PocketMoneyRegisterFragment
     : WFFragment<FragmentPocketMoneyRegisterBinding>(R.layout.fragment_pocket_money_register) {
 
     override var logTag = "PocketMoneyRegisterFragment"
+
+    private var itemShop: ItemShop? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,6 +32,8 @@ class PocketMoneyRegisterFragment
 
         arguments?.let {
             val item = PocketMoneyRegisterFragmentArgs.fromBundle(it).item ?: return
+
+            itemShop = item
             setView(item)
         }
     }
@@ -78,8 +87,26 @@ class PocketMoneyRegisterFragment
                 return@setOnClickListener
             }
 
-            val direction = HomeFragmentDirections.actionGlobalHomeFragment(true)
-            navigate(direction)
+            //TODO 용돈 모으기 가입
+            lifecycleScope.launch {
+                showLoadingDialog()
+                delay(1000)
+                hideLoadingDialog()
+
+                CashData.nestItem = NestResponse(
+                    query = goal,
+                    goalAmount = money,
+                    comment = promise,
+                    currentAmount = "7",
+                    monthlyPayment = "10",
+                    cheeringCount = "100",
+
+                    image = itemShop?.image ?: ""
+                )
+
+                val direction = HomeFragmentDirections.actionGlobalHomeFragment(true)
+                navigate(direction)
+            }
 
             return@setOnClickListener
 

@@ -2,8 +2,11 @@ package mashup.littleforest.wooriforest.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.data.model.response.LinkTransItem
@@ -29,23 +32,36 @@ class NestRecommendFragment :
 
             binding.rvHobbyNest.adapter = hobbyNestAdapter
 
-            val sample = mutableListOf(
-                LinkTransItem(
-                    id = "1",
-                    title = "nest1",
-                    content = "nest content 1",
-                    memberCount = 10,
-                    isShowMemberCount = true
-                ),
-                LinkTransItem(
-                    id = "2",
-                    title = "nest2",
-                    content = "nest content 2",
-                    memberCount = 20,
-                    isShowMemberCount = true
+            lifecycleScope.launch {
+                showLoadingDialog()
+                delay(1000)
+                hideLoadingDialog()
+
+                val sample = mutableListOf(
+                    LinkTransItem(
+                        id = "1",
+                        title = "마블 덕후 둥지",
+                        content = "마블 피규어 모으고 후기 나누는 모임입니다! 함께해요~",
+                        memberCount = 231,
+                        isShowMemberCount = true
+                    ),
+                    LinkTransItem(
+                        id = "2",
+                        title = "디즈니 덕후 둥지",
+                        content = "디즈니 피규어 모으고 후기 나누는 모임입니다! 🥺",
+                        memberCount = 19,
+                        isShowMemberCount = true
+                    ),
+                    LinkTransItem(
+                        id = "3",
+                        title = "애플 덕후 둥지",
+                        content = "애플 매니아는 여기여기 모여라! 서로 공유하고 나누자!",
+                        memberCount = 1097,
+                        isShowMemberCount = true
+                    )
                 )
-            )
-            hobbyNestAdapter.replaceAll(sample)
+                hobbyNestAdapter.replaceAll(sample)
+            }
 
             return@let
 
@@ -72,15 +88,21 @@ class NestRecommendFragment :
                 return@setOnClickListener
             }
 
-            val direction = NestRecommendFragmentDirections.actionNestRecommendFragmentToNestCompleteFragment(title, item)
+            lifecycleScope.launch {
+                showLoadingDialog()
+                delay(1000)
+                hideLoadingDialog()
 
-            navigate(direction)
+                val direction = NestRecommendFragmentDirections.actionNestRecommendFragmentToNestCompleteFragment(title, item)
+                navigate(direction)
+            }
 
             return@setOnClickListener
 
             fetch {
                 val result = wooriApi.join(id)
                 Dlog.d("result : $result")
+                val direction = NestRecommendFragmentDirections.actionNestRecommendFragmentToNestCompleteFragment(title, item)
                 navigate(direction)
             }
         }

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class LinkTransRequest(
     @SerializedName("carrier")
-    val carrier: String?,
+    val carrier: Int?,
     @SerializedName("phone")
     val phone: String?,
     @SerializedName("name")

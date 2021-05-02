@@ -15,5 +15,8 @@ data class NestResponse(
     @SerializedName("monthlyPayment")
     val monthlyPayment: String?,
     @SerializedName("cheeringCount")
-    val cheeringCount: String?
+    val cheeringCount: String?,
+
+    //local
+    val image: String = ""
 )

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
+import mashup.littleforest.wooriforest.data.CashData
 import mashup.littleforest.wooriforest.databinding.FragmentNestCompleteBinding
 import mashup.littleforest.wooriforest.utils.PrefUtil
 
@@ -17,6 +18,8 @@ class NestCompleteFragment :
         arguments?.let {
             val title = NestCompleteFragmentArgs.fromBundle(it).title
             val item = NestCompleteFragmentArgs.fromBundle(it).item
+
+            CashData.linkTransItem = item
 
             initTitle()
             initButton()

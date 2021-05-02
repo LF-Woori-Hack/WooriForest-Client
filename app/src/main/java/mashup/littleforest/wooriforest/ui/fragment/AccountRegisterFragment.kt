@@ -1,8 +1,13 @@
 package mashup.littleforest.wooriforest.ui.fragment
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
+import androidx.lifecycle.lifecycleScope
+import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.data.model.request.LinkTransRequest
@@ -30,7 +35,8 @@ class AccountRegisterFragment
             val registerNumber2 = binding.etRegister2.text.toString()
 
             Dlog.d("$agency : $phoneNumber / $name / $registerNumber1-$registerNumber2")
-            /*if (TextUtils.isEmpty(agency)) {
+            if (TextUtils.isEmpty(agency)) {
+                //1-SKT, 2-KT, 3-LGU+, 5-SKT(알뜰폰), 6-KT(알뜰폰), 7-LGU+(알뜰폰)
                 binding.etNewsAgency.error = "통신사를 입력해 주세요."
                 return@setOnClickListener
             }
@@ -47,30 +53,36 @@ class AccountRegisterFragment
             if (TextUtils.isEmpty(registerNumber1) || TextUtils.isEmpty(registerNumber2)) {
                 toast("주민등록 번호를 입력해주세요.")
                 return@setOnClickListener
-            }*/
+            }
 
-            connectAccount(agency, phoneNumber, name, registerNumber1, registerNumber2)
+            //TODO 통신사 맞춤 버튼 작업 하기
+            lifecycleScope.launch {
+                showLoadingDialog()
+                delay(1000)
+                hideLoadingDialog()
+                connectAccount(1, phoneNumber, name, registerNumber1, registerNumber2)
+            }
         }
     }
 
-    private fun connectAccount(carrier: String, phoneNumber: String, name: String, birthday: String, rrno: String) {
+    private fun connectAccount(agency: Int, phoneNumber: String, name: String, birthday: String, rrno: String) {
         PrefUtil.put(PrefUtil.PREF_USER_NAME, name)
 
         val sample = mutableListOf(
             LinkTransItem(
                 id = "1",
-                title = "title1",
-                content = "content1",
+                title = "#커피 덕후",
+                content = "다른 소비보다도 커피 소비 횟수가 많으시네요!",
             ),
             LinkTransItem(
                 id = "2",
-                title = "title2",
-                content = "content2",
+                title = "#마블 덕후",
+                content = "다른 소비보다도 마블 소비 횟수가 많으시네요!",
             ),
             LinkTransItem(
                 id = "3",
-                title = "title3",
-                content = "content3",
+                title = "#쇼핑 덕후",
+                content = "다른 소비보다도 쇼핑 소비 횟수가 많으시네요!",
             )
         ).toTypedArray()
 
@@ -79,7 +91,7 @@ class AccountRegisterFragment
         return
 
         val request = LinkTransRequest(
-            carrier = carrier,
+            carrier = agency,
             phone = phoneNumber,
             name = name,
             birthday = birthday,

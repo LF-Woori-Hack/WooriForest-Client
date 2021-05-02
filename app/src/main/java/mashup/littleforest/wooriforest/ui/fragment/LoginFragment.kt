@@ -2,9 +2,12 @@ package mashup.littleforest.wooriforest.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import com.tistory.blackjinbase.util.Dlog
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.WoorisForestApplication
 import mashup.littleforest.wooriforest.base.WFFragment
@@ -23,7 +26,12 @@ class LoginFragment : WFFragment<FragmentLoginBinding>(R.layout.fragment_login) 
     private fun initButton() {
         binding.btnKakaoLogin.setOnClickListener {
             //TODO kakaoLogin()
-            goToHobbyCheck()
+            lifecycleScope.launch {
+                showLoadingDialog()
+                delay(1000)
+                hideLoadingDialog()
+                goToHobbyCheck()
+            }
         }
     }
 

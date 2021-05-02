@@ -9,6 +9,7 @@ import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
+import mashup.littleforest.wooriforest.data.CashData
 import mashup.littleforest.wooriforest.databinding.FragmentHomeBinding
 import mashup.littleforest.wooriforest.ui.dialog.FinancialTipFragmentDialog
 
@@ -61,11 +62,14 @@ class HomeFragment :
 
     private fun loadData() {
         fetch {
-            val result = wooriApi.getNest()
+            //TODO result = wooriApi.getNest()
+            //Dlog.d("result : $result")
+
+            val result = CashData.nestItem ?: return@fetch
             Dlog.d("result : $result")
 
             binding.ivNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_img_bird))
-            binding.tvNest.text = "#우리의 숲"
+            binding.tvNest.text = CashData.linkTransItem?.title ?: "우리의 숲"
             binding.tvNestTitle.text = "용돈모으기"
 
             binding.ivItemNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.img_add_circle_outline_white))
