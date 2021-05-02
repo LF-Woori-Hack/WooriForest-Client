@@ -41,7 +41,8 @@ class WebViewFragment : WFFragment<FragmentWebViewBinding>(R.layout.fragment_web
 
     private fun initButton() {
         binding.btnRegisterPocketMoney.setOnClickListener {
-            navigate(R.id.action_webViewFragment_to_pocketMoneyRegisterFragment)
+            val direction = WebViewFragmentDirections.actionWebViewFragmentToPocketMoneyRegisterFragment(null)
+            navigate(direction)
         }
     }
 }

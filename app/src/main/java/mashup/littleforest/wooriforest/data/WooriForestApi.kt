@@ -1,5 +1,6 @@
 package mashup.littleforest.wooriforest.data
 
+import mashup.littleforest.wooriforest.data.model.request.JoinRequest
 import mashup.littleforest.wooriforest.data.model.request.LinkTransRequest
 import mashup.littleforest.wooriforest.data.model.request.LoginRequest
 import mashup.littleforest.wooriforest.data.model.response.LinkTransItem
@@ -30,4 +31,9 @@ interface WooriForestApi {
     suspend fun join(
         @Query("id") id: Int
     ): SuccessResponse
+
+    @POST("/v1/saving/join")
+    suspend fun join(
+        request: JoinRequest
+    ): List<SuccessResponse>
 }
