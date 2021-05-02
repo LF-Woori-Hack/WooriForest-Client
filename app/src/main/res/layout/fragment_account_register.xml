@@ -72,7 +72,7 @@
                     android:layout_height="56dp"
                     android:layout_marginTop="4dp"
                     android:layout_width="match_parent"
-                    android:background="@drawable/drawable_rect_stroke_black_rad_10" />
+                    android:background="@drawable/bg_account_register" />
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,7 +115,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
+                android:layout_height="56dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_account_register"
                 android:orientation="horizontal">
