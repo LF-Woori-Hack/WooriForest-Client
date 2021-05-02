@@ -59,12 +59,13 @@ class HobbyRecommendFragment :
         }
 
         binding.btnShareKakao.setOnClickListener {
-            val title = hobbyNestAdapter.getShareTitle()
+            val title = hobbyNestAdapter.getSelectedItemTitle() ?: return@setOnClickListener
+            val message = "소비 내역을 통해 본 나의 관심 취미는 $title 입니다."
 
             val sharingIntent = Intent(Intent.ACTION_SEND)
             sharingIntent.type = "text/plain"
 
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, title)
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, message)
             sharingIntent.setPackage("com.kakao.talk")
 
             startActivity(sharingIntent)

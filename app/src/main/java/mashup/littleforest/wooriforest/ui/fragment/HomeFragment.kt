@@ -79,11 +79,12 @@ class HomeFragment :
 
             binding.tvPrice.text = "${result.currentAmount}"
 
-            val goal = result.goalAmount?.toInt() ?: 1
-            val current = result.currentAmount?.toInt() ?: 1
-            val percent = current / goal * 100 //  0 ~ 100 %
+            val goal = result.goalAmount?.toFloat() ?: 1f
+            val current = result.currentAmount?.toFloat() ?: 1f
+            val percent = current / goal * 100f //  0 ~ 100 %
+            val strPercent = String.format("%.2f", percent)
 
-            binding.tvPriceDetail.text = "목표금액 ${result.goalAmount}원 | ${percent}% 달성 | 모으기 내역"
+            binding.tvPriceDetail.text = "목표금액 ${result.goalAmount}원 | $strPercent% 달성 | 모으기 내역"
 
             binding.ivMissionStamp1.visibility = View.INVISIBLE
             binding.ivMissionStamp2.visibility = View.INVISIBLE
@@ -92,25 +93,25 @@ class HomeFragment :
             binding.ivMissionStamp5.visibility = View.INVISIBLE
 
             when {
-                percent in 21..40 -> {
+                percent in 0f..20f -> {
                     binding.ivMissionStamp1.visibility = View.VISIBLE
                 }
-                percent in 41..60 -> {
+                percent in 21f..40f -> {
                     binding.ivMissionStamp1.visibility = View.VISIBLE
                     binding.ivMissionStamp2.visibility = View.VISIBLE
                 }
-                percent in 61..80 -> {
+                percent in 41f..60f -> {
                     binding.ivMissionStamp1.visibility = View.VISIBLE
                     binding.ivMissionStamp2.visibility = View.VISIBLE
                     binding.ivMissionStamp3.visibility = View.VISIBLE
                 }
-                percent in 81..100 -> {
+                percent in 61f..80f -> {
                     binding.ivMissionStamp1.visibility = View.VISIBLE
                     binding.ivMissionStamp2.visibility = View.VISIBLE
                     binding.ivMissionStamp3.visibility = View.VISIBLE
                     binding.ivMissionStamp4.visibility = View.VISIBLE
                 }
-                percent >= 100 -> {
+                percent >= 81f -> {
                     binding.ivMissionStamp1.visibility = View.VISIBLE
                     binding.ivMissionStamp2.visibility = View.VISIBLE
                     binding.ivMissionStamp3.visibility = View.VISIBLE
@@ -129,63 +130,7 @@ class HomeFragment :
         fetch {
             val result = wooriApi.getNest()
             Dlog.d("result : $result")
-
-            binding.ivNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_img_bird))
-            binding.tvNest.text = CashData.linkTransItem?.title ?: "우리의 숲"
-            binding.tvNestTitle.text = "용돈모으기"
-
-            //binding.ivItemNest.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.img_add_circle_outline_white))
-            binding.ivItemNest.setImageUrl(result.image)
-            binding.tvItemNestTitle.text = result.query
-
-            binding.tvSaveMission.text = "하루 ${result.monthlyPayment!!.toInt() / 10000}만원씩"
-            binding.tvCheerCount.text = "${result.cheeringCount}"
-
-            binding.tvPrice.text = "${result.currentAmount}"
-
-            val goal = result.goalAmount?.toInt() ?: 1
-            val current = result.currentAmount?.toInt() ?: 1
-            val percent = current / goal * 100 //  0 ~ 100 %
-
-            binding.tvPriceDetail.text = "목표금액 ${result.goalAmount}원 | ${percent}% 달성 | 모으기 내역"
-
-            binding.ivMissionStamp1.visibility = View.INVISIBLE
-            binding.ivMissionStamp2.visibility = View.INVISIBLE
-            binding.ivMissionStamp3.visibility = View.INVISIBLE
-            binding.ivMissionStamp4.visibility = View.INVISIBLE
-            binding.ivMissionStamp5.visibility = View.INVISIBLE
-
-            when {
-                percent in 21..40 -> {
-                    binding.ivMissionStamp1.visibility = View.VISIBLE
-                }
-                percent in 41..60 -> {
-                    binding.ivMissionStamp1.visibility = View.VISIBLE
-                    binding.ivMissionStamp2.visibility = View.VISIBLE
-                }
-                percent in 61..80 -> {
-                    binding.ivMissionStamp1.visibility = View.VISIBLE
-                    binding.ivMissionStamp2.visibility = View.VISIBLE
-                    binding.ivMissionStamp3.visibility = View.VISIBLE
-                }
-                percent in 81..100 -> {
-                    binding.ivMissionStamp1.visibility = View.VISIBLE
-                    binding.ivMissionStamp2.visibility = View.VISIBLE
-                    binding.ivMissionStamp3.visibility = View.VISIBLE
-                    binding.ivMissionStamp4.visibility = View.VISIBLE
-                }
-                percent >= 100 -> {
-                    binding.ivMissionStamp1.visibility = View.VISIBLE
-                    binding.ivMissionStamp2.visibility = View.VISIBLE
-                    binding.ivMissionStamp3.visibility = View.VISIBLE
-                    binding.ivMissionStamp4.visibility = View.VISIBLE
-                    binding.ivMissionStamp5.visibility = View.VISIBLE
-                }
-            }
-
-            binding.btnRegisterSaveMoney.setOnClickListener {
-                //..
-            }
+            //..
         }
     }
 

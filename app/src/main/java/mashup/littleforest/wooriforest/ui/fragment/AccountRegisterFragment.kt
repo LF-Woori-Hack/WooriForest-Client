@@ -89,18 +89,18 @@ class AccountRegisterFragment
             val sample = mutableListOf(
                 LinkTransItem(
                     id = "1",
-                    title = "#커피 덕후",
-                    content = "다른 소비보다도 커피 소비 횟수가 많으시네요!",
+                    title = "#편의점 덕후",
+                    content = "다른 소비보다도 편의점 소비 횟수가 많으시네요!",
                 ),
                 LinkTransItem(
                     id = "2",
-                    title = "#마블 덕후",
-                    content = "다른 소비보다도 마블 소비 횟수가 많으시네요!",
+                    title = "#신발 덕후",
+                    content = "다른 소비보다도 신발 소비 횟수가 많으시네요!",
                 ),
                 LinkTransItem(
                     id = "3",
-                    title = "#쇼핑 덕후",
-                    content = "다른 소비보다도 쇼핑 소비 횟수가 많으시네요!",
+                    title = "#자전거 덕후",
+                    content = "다른 소비보다도 자전거 소비 횟수가 많으시네요!",
                 )
             ).toTypedArray()
 

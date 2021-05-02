@@ -33,23 +33,30 @@ class NestRecommendFragment :
                 val sample = mutableListOf(
                     LinkTransItem(
                         id = "1",
-                        title = "마블 덕후 둥지",
-                        content = "마블 피규어 모으고 후기 나누는 모임입니다! 함께해요~",
+                        title = "꾸안꾸를 위한 둥지",
+                        content = "꾸안꾸의 시작은 신발에서 부터입니다~! 같이 정보 공유하며 패션을 가꿔보아요~! ><️",
                         memberCount = 231,
                         isShowMemberCount = true
                     ),
                     LinkTransItem(
                         id = "2",
-                        title = "디즈니 덕후 둥지",
-                        content = "디즈니 피규어 모으고 후기 나누는 모임입니다! 🥺",
+                        title = "조던 한번 사보자 둥지",
+                        content = "솔직히 살면서 조던 하나 정도는 있어야되지 않겠어?",
                         memberCount = 19,
                         isShowMemberCount = true
                     ),
                     LinkTransItem(
                         id = "3",
-                        title = "애플 덕후 둥지",
-                        content = "애플 매니아는 여기여기 모여라! 서로 공유하고 나누자!",
+                        title = "캔버스의 빠지다 둥지",
+                        content = "캔버스로도 얼마든지 꾸밀 수 있다! 다 모여라",
                         memberCount = 1097,
+                        isShowMemberCount = true
+                    ),
+                    LinkTransItem(
+                        id = "4",
+                        title = "Just Do It! 런닝화 둥지",
+                        content = "런닝의 시작은 나이키 이지 말입니다?",
+                        memberCount = 97,
                         isShowMemberCount = true
                     )
                 )
