@@ -34,7 +34,7 @@ class NestCompleteFragment :
 
     private fun initButton() {
         binding.btnOk.setOnClickListener {
-            navigate(R.id.action_nestCompleteFragment_to_homeFragment)
+            navigate(R.id.action_global_homeFragment)
         }
     }
 }

@@ -55,9 +55,6 @@
         android:name="mashup.littleforest.wooriforest.ui.fragment.NestCompleteFragment"
         android:label="NestCompleteFragment"
         tools:layout="@layout/fragment_nest_complete">
-        <action
-            android:id="@+id/action_nestCompleteFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
         <argument
             android:name="title"
             app:argType="string" />
@@ -70,9 +67,6 @@
         android:name="mashup.littleforest.wooriforest.ui.fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_nestServiceGuideFragment"
-            app:destination="@id/nestServiceGuideFragment" />
     </fragment>
     <fragment
         android:id="@+id/nestServiceGuideFragment"
