@@ -3,11 +3,8 @@ package mashup.littleforest.wooriforest.ui.fragment
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import androidx.lifecycle.lifecycleScope
 import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.data.model.request.LinkTransRequest
@@ -55,39 +52,36 @@ class AccountRegisterFragment
                 return@setOnClickListener
             }
 
-            //TODO 통신사 맞춤 버튼 작업 하기
-            lifecycleScope.launch {
-                showLoadingDialog()
-                delay(1000)
-                hideLoadingDialog()
-                connectAccount(1, phoneNumber, name, registerNumber1, registerNumber2)
-            }
+            connectAccount(1, phoneNumber, name, registerNumber1, registerNumber2)
         }
     }
 
     private fun connectAccount(agency: Int, phoneNumber: String, name: String, birthday: String, rrno: String) {
         PrefUtil.put(PrefUtil.PREF_USER_NAME, name)
 
-        val sample = mutableListOf(
-            LinkTransItem(
-                id = "1",
-                title = "#커피 덕후",
-                content = "다른 소비보다도 커피 소비 횟수가 많으시네요!",
-            ),
-            LinkTransItem(
-                id = "2",
-                title = "#마블 덕후",
-                content = "다른 소비보다도 마블 소비 횟수가 많으시네요!",
-            ),
-            LinkTransItem(
-                id = "3",
-                title = "#쇼핑 덕후",
-                content = "다른 소비보다도 쇼핑 소비 횟수가 많으시네요!",
-            )
-        ).toTypedArray()
+        fetchTest {
+            val sample = mutableListOf(
+                LinkTransItem(
+                    id = "1",
+                    title = "#커피 덕후",
+                    content = "다른 소비보다도 커피 소비 횟수가 많으시네요!",
+                ),
+                LinkTransItem(
+                    id = "2",
+                    title = "#마블 덕후",
+                    content = "다른 소비보다도 마블 소비 횟수가 많으시네요!",
+                ),
+                LinkTransItem(
+                    id = "3",
+                    title = "#쇼핑 덕후",
+                    content = "다른 소비보다도 쇼핑 소비 횟수가 많으시네요!",
+                )
+            ).toTypedArray()
 
-        val direction = AccountRegisterFragmentDirections.actionAccountRegisterFragmentToHobbyRecommendFragment(sample)
-        navigate(direction)
+            val direction = AccountRegisterFragmentDirections.actionAccountRegisterFragmentToHobbyRecommendFragment(sample)
+            navigate(direction)
+        }
+
         return
 
         val request = LinkTransRequest(
@@ -101,6 +95,8 @@ class AccountRegisterFragment
         fetch {
             val response = wooriApi.linkTrans(request)
             Dlog.d("response : $response")
+            val direction = AccountRegisterFragmentDirections.actionAccountRegisterFragmentToHobbyRecommendFragment(response.toTypedArray())
+            navigate(direction)
         }
     }
 }

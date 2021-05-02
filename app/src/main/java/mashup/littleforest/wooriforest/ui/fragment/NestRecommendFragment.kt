@@ -2,11 +2,8 @@ package mashup.littleforest.wooriforest.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.lifecycleScope
 import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.data.model.response.LinkTransItem
@@ -32,11 +29,7 @@ class NestRecommendFragment :
 
             binding.rvHobbyNest.adapter = hobbyNestAdapter
 
-            lifecycleScope.launch {
-                showLoadingDialog()
-                delay(1000)
-                hideLoadingDialog()
-
+            fetchTest {
                 val sample = mutableListOf(
                     LinkTransItem(
                         id = "1",
@@ -62,7 +55,6 @@ class NestRecommendFragment :
                 )
                 hobbyNestAdapter.replaceAll(sample)
             }
-
             return@let
 
             fetch {
@@ -88,15 +80,10 @@ class NestRecommendFragment :
                 return@setOnClickListener
             }
 
-            lifecycleScope.launch {
-                showLoadingDialog()
-                delay(1000)
-                hideLoadingDialog()
-
+            fetchTest {
                 val direction = NestRecommendFragmentDirections.actionNestRecommendFragmentToNestCompleteFragment(title, item)
                 navigate(direction)
             }
-
             return@setOnClickListener
 
             fetch {

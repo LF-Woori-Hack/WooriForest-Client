@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.text.Html
 import android.text.TextUtils
 import android.view.View
-import androidx.lifecycle.lifecycleScope
 import com.tistory.blackjinbase.ext.toast
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.tistory.blackjinbase.util.Dlog
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.data.CashData
@@ -87,27 +85,20 @@ class PocketMoneyRegisterFragment
                 return@setOnClickListener
             }
 
-            //TODO 용돈 모으기 가입
-            lifecycleScope.launch {
-                showLoadingDialog()
-                delay(1000)
-                hideLoadingDialog()
-
+            fetchTest {
                 CashData.nestItem = NestResponse(
                     query = goal,
                     goalAmount = money,
                     comment = promise,
-                    currentAmount = "7",
-                    monthlyPayment = "10",
-                    cheeringCount = "100",
-
+                    currentAmount = "70000",
+                    monthlyPayment = "10000",
+                    cheeringCount = "121",
                     image = itemShop?.image ?: ""
                 )
 
                 val direction = HomeFragmentDirections.actionGlobalHomeFragment(true)
                 navigate(direction)
             }
-
             return@setOnClickListener
 
             val request = JoinRequest(
@@ -117,7 +108,11 @@ class PocketMoneyRegisterFragment
             )
 
             fetch {
-                wooriApi.join(request)
+                val result = wooriApi.join(request)
+                Dlog.d("result : $result")
+
+                val direction = HomeFragmentDirections.actionGlobalHomeFragment(true)
+                navigate(direction)
             }
         }
     }

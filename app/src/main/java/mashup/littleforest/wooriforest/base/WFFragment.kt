@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.tistory.blackjinbase.base.BaseFragment
 import com.tistory.blackjinbase.ui.LoadingDialog
 import com.tistory.blackjinbase.util.Dlog
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mashup.littleforest.wooriforest.data.ApiProvider
 
@@ -44,6 +45,20 @@ abstract class WFFragment<B : ViewDataBinding>(
 
     fun navigate(directions: NavDirections) {
         findNavController().navigate(directions)
+    }
+
+    fun fetchTest(listener: () -> Unit) {
+        lifecycleScope.launch {
+            try {
+                showLoadingDialog()
+                delay(1000)
+                hideLoadingDialog()
+                listener.invoke()
+            } catch (e: Exception) {
+                Dlog.e(e.message)
+                hideLoadingDialog()
+            }
+        }
     }
 
     fun fetch(listener: suspend () -> Unit) {
