@@ -39,5 +39,6 @@
     <string name="pocket_money_register_content">취미를 위한 용돈을 차곡차곡 모아볼까요?</string>
 
     <string name="format_item_price">가격 : %d원</string>
+    <string name="format_member_count">맴버 %d명</string>
 
 </resources>

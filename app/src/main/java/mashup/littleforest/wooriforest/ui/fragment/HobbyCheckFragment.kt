@@ -18,12 +18,13 @@ class HobbyCheckFragment :
     }
 
     private fun initButton() {
+        binding.btnNoCheckHobby.visibility = View.GONE
         binding.btnNoCheckHobby.setOnClickListener {
             toast("연결 안하고 바로 시작하기")
         }
 
         binding.btnCheckHobby.setOnClickListener {
-            navigate(R.id.action_hobbyCheckFragment_to_hobbyRecommendFragment)
+            navigate(R.id.action_hobbyCheckFragment_to_accountRegisterFragment)
         }
     }
 }

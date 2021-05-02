@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="title"
-            type="String" />
+            name="model"
+            type="mashup.littleforest.wooriforest.data.model.response.LinkTransItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,9 +46,10 @@
                 android:background="@drawable/drawable_rect_orange_rad_25"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:text="#피규어 덕후"
+                android:text="@{model.title}"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="#피규어 덕후" />
 
             <TextView
                 style="@style/TextStyle.ItemContent"
@@ -55,14 +57,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
-                android:text="정아리님은 다른 소비보다도 피규어 소비 횟수가 많으시네요!" />
+                android:text="@{model.content}"
+                tools:text="정아리님은 다른 소비보다도 피규어 소비 횟수가 많으시네요!" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_item_uncheck_36px"
+            android:src="@{model.isSelected ? @drawable/ic_item_check_36px : @drawable/ic_item_uncheck_36px}"
+            android:visibility="@{model.isShowSelectedBox}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_item_uncheck_36px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:text="@{@string/format_member_count(model.memberCount)}"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:visibility="@{model.isShowMemberCount}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="멤버 240명" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiProvider {
 
-    private const val baseUrl = "https://cloud.iexapis.com/"
+    private const val baseUrl = "13.125.150.163"
 
     private const val naverBaseUrl = "https://openapi.naver.com/v1/"
 
@@ -21,6 +21,13 @@ object ApiProvider {
         .addConverterFactory(getGsonConverter())
         .build()
         .create(service)
+
+    fun provideWooriApi(): WooriForestApi = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .client(getOkhttpClient())
+        .addConverterFactory(getGsonConverter())
+        .build()
+        .create(WooriForestApi::class.java)
 
     fun provideNaverApi(): NaverShopApi = Retrofit.Builder()
         .baseUrl(naverBaseUrl)
@@ -42,7 +49,7 @@ object ApiProvider {
         addInterceptor(getLoggingInterceptor())
 
         // header 에 정보를 추가해 준다.
-        addInterceptor(AddHeaderInterceptor(true))
+        addInterceptor(AddHeaderInterceptor())
 
     }.build()
 

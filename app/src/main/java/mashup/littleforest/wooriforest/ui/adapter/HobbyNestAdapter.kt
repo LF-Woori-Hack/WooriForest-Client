@@ -5,15 +5,35 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import mashup.littleforest.wooriforest.R
+import mashup.littleforest.wooriforest.data.model.response.LinkTransItem
 import mashup.littleforest.wooriforest.databinding.ItemHobbyNestBinding
 
 class HobbyNestAdapter
     : RecyclerView.Adapter<HobbyNestAdapter.HobbyNestViewModel>() {
 
-    private val items = mutableListOf<String>()
+    private val items = mutableListOf<LinkTransItem>()
+
+    private var preSelectedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HobbyNestViewModel {
-        return HobbyNestViewModel(parent)
+        return HobbyNestViewModel(parent).apply {
+            itemView.setOnClickListener {
+                if (preSelectedPosition >= 0) {
+                    items[preSelectedPosition] = items[preSelectedPosition].copy(isSelected = false)
+                    items[adapterPosition] = items[adapterPosition].copy(isSelected = true)
+
+                    notifyItemChanged(preSelectedPosition)
+                    notifyItemChanged(adapterPosition)
+
+                    preSelectedPosition = adapterPosition
+                } else {
+                    items[adapterPosition] = items[adapterPosition].copy(isSelected = true)
+                    notifyItemChanged(adapterPosition)
+
+                    preSelectedPosition = adapterPosition
+                }
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: HobbyNestViewModel, position: Int) {
@@ -22,11 +42,17 @@ class HobbyNestAdapter
 
     override fun getItemCount() = items.size
 
-    fun replaceAll(items: List<String>) {
+    fun replaceAll(items: List<LinkTransItem>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
     }
+
+    fun getSelectedItem() = items.find { it.isSelected }
+
+    fun getSelectedItemId() = items.find { it.isSelected }?.id
+
+    fun getSelectedItemTitle() = items.find { it.isSelected }?.title
 
     class HobbyNestViewModel(
         parent: ViewGroup
@@ -37,8 +63,8 @@ class HobbyNestAdapter
 
         private val binding: ItemHobbyNestBinding? = DataBindingUtil.bind(itemView)
 
-        fun bind(item: String) {
-            //binding?.item = item
+        fun bind(item: LinkTransItem) {
+            binding?.model = item
         }
     }
 }

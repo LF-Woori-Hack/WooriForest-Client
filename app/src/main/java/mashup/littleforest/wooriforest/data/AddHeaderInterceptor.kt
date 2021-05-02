@@ -6,18 +6,13 @@ import okhttp3.Interceptor
 import okhttp3.Response
 
 //https://github.com/square/okhttp/wiki/Interceptors
-class AddHeaderInterceptor(private val refresh: Boolean) : Interceptor {
+class AddHeaderInterceptor() : Interceptor {
 
     private val tag = "okhttp"
 
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
-        val token = if (refresh) {
-            PrefUtil.get(PrefUtil.PREF_REFRESH_TOKEN, "")
-        } else {
-            PrefUtil.get(PrefUtil.PREF_ACCESS_TOKEN, "")
-        }
-
-        Log.d(tag, "refresh : $refresh, token : $token")
+        val token = PrefUtil.get(PrefUtil.PREF_ACCESS_TOKEN, "")
+        Log.d(tag, "token : $token")
 
         //val headerToken = "Bearer $token"
 

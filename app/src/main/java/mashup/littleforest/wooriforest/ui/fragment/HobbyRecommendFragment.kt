@@ -1,12 +1,14 @@
 package mashup.littleforest.wooriforest.ui.fragment
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import com.tistory.blackjinbase.ext.toast
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.databinding.FragmentHobbyRecommendBinding
 import mashup.littleforest.wooriforest.ui.adapter.HobbyNestAdapter
+import mashup.littleforest.wooriforest.utils.PrefUtil
 
 class HobbyRecommendFragment :
     WFFragment<FragmentHobbyRecommendBinding>(R.layout.fragment_hobby_recommend) {
@@ -17,26 +19,41 @@ class HobbyRecommendFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initTitle()
-        initButton()
+        arguments?.let {
+            val items = HobbyRecommendFragmentArgs.fromBundle(it).items
+            val hobbies = StringBuilder()
 
-        binding.rvHobbyNest.adapter = hobbyNestAdapter
-        hobbyNestAdapter.replaceAll(mutableListOf("test1", "test2", "test3"))
+            items.forEach { item ->
+                hobbies.append(item.title)
+                hobbies.append(" ")
+            }
+
+            initTitle(hobbies.toString())
+            initButton()
+
+            binding.rvHobbyNest.adapter = hobbyNestAdapter
+            hobbyNestAdapter.replaceAll(items.toList())
+        }
     }
 
-    private fun initTitle() {
-        binding.tvTitle.text =
-            String.format(resources.getString(R.string.format_recommend_hobby_title), "정아리")
-        binding.tvContent.text = String.format(
-            resources.getString(R.string.format_recommend_hobby_content),
-            "정아리",
-            "#피규어 #문구류"
-        )
+    private fun initTitle(hobbies: String) {
+        val name = PrefUtil.get(PrefUtil.PREF_USER_NAME, "")
+
+        binding.tvTitle.text = String.format(resources.getString(R.string.format_recommend_hobby_title), name)
+        binding.tvContent.text = String.format(resources.getString(R.string.format_recommend_hobby_content), name, hobbies)
     }
 
     private fun initButton() {
         binding.btnGoToJoinHobby.setOnClickListener {
-            navigate(R.id.action_hobbyRecommendFragment_to_nestRecommendFragment)
+            val id = hobbyNestAdapter.getSelectedItemId()
+            val title = hobbyNestAdapter.getSelectedItemTitle()
+
+            if (TextUtils.isEmpty(id)) {
+                toast("취미 1가지를 선택해주세요")
+            } else {
+                val direction = HobbyRecommendFragmentDirections.actionHobbyRecommendFragmentToNestRecommendFragment(id!!, title!!)
+                navigate(direction)
+            }
         }
 
         binding.btnShareKakao.setOnClickListener {

@@ -1,6 +1,6 @@
 package mashup.littleforest.wooriforest.data
 
-import mashup.littleforest.wooriforest.data.model.ShopResponse
+import mashup.littleforest.wooriforest.data.model.response.ShopResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

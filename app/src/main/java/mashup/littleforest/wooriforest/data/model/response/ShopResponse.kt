@@ -1,4 +1,4 @@
-package mashup.littleforest.wooriforest.data.model
+package mashup.littleforest.wooriforest.data.model.response
 
 
 import com.google.gson.annotations.SerializedName

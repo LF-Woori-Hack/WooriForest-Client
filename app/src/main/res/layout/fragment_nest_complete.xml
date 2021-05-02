@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="model"
+            type="mashup.littleforest.wooriforest.data.model.response.LinkTransItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,7 +75,8 @@
             <include
                 layout="@layout/item_hobby_nest"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:model="@{model}" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

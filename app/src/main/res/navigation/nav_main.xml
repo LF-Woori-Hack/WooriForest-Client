@@ -20,8 +20,8 @@
         android:label="HobbyCheckFragment"
         tools:layout="@layout/fragment_hobby_check">
         <action
-            android:id="@+id/action_hobbyCheckFragment_to_hobbyRecommendFragment"
-            app:destination="@id/hobbyRecommendFragment" />
+            android:id="@+id/action_hobbyCheckFragment_to_accountRegisterFragment"
+            app:destination="@id/accountRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/hobbyRecommendFragment"
@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_hobbyRecommendFragment_to_nestRecommendFragment"
             app:destination="@id/nestRecommendFragment" />
+        <argument
+            android:name="items"
+            app:argType="mashup.littleforest.wooriforest.data.model.response.LinkTransItem[]" />
     </fragment>
     <fragment
         android:id="@+id/nestRecommendFragment"
@@ -40,6 +43,12 @@
         <action
             android:id="@+id/action_nestRecommendFragment_to_nestCompleteFragment"
             app:destination="@id/nestCompleteFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/nestCompleteFragment"
@@ -49,6 +58,12 @@
         <action
             android:id="@+id/action_nestCompleteFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="item"
+            app:argType="mashup.littleforest.wooriforest.data.model.response.LinkTransItem" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -97,4 +112,13 @@
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment" />
+    <fragment
+        android:id="@+id/accountRegisterFragment"
+        android:name="mashup.littleforest.wooriforest.ui.fragment.AccountRegisterFragment"
+        android:label="AccountRegisterFragment"
+        tools:layout="@layout/fragment_account_register">
+        <action
+            android:id="@+id/action_accountRegisterFragment_to_hobbyRecommendFragment"
+            app:destination="@id/hobbyRecommendFragment" />
+    </fragment>
 </navigation>
