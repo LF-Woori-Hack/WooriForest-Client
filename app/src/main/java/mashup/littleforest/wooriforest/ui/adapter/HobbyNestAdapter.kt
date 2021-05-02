@@ -54,6 +54,19 @@ class HobbyNestAdapter
 
     fun getSelectedItemTitle() = items.find { it.isSelected }?.title
 
+    fun getShareTitle(): String {
+        val shareTitle = StringBuilder()
+        shareTitle.append("소비 내역을 통해 본 나의 관심 취미는\n")
+
+        items.forEach {
+            shareTitle.append("${it.title} ")
+        }
+
+        shareTitle.append("입니다~!")
+
+        return shareTitle.toString()
+    }
+
     class HobbyNestViewModel(
         parent: ViewGroup
     ) : RecyclerView.ViewHolder(

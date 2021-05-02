@@ -1,5 +1,6 @@
 package mashup.littleforest.wooriforest.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -9,6 +10,7 @@ import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.databinding.FragmentHobbyRecommendBinding
 import mashup.littleforest.wooriforest.ui.adapter.HobbyNestAdapter
 import mashup.littleforest.wooriforest.utils.PrefUtil
+
 
 class HobbyRecommendFragment :
     WFFragment<FragmentHobbyRecommendBinding>(R.layout.fragment_hobby_recommend) {
@@ -57,9 +59,18 @@ class HobbyRecommendFragment :
         }
 
         binding.btnShareKakao.setOnClickListener {
-            toast("카카오 공유하기")
+            val title = hobbyNestAdapter.getShareTitle()
+
+            val sharingIntent = Intent(Intent.ACTION_SEND)
+            sharingIntent.type = "text/plain"
+
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, title)
+            sharingIntent.setPackage("com.kakao.talk")
+
+            startActivity(sharingIntent)
         }
 
+        binding.btnExtractAgain.visibility = View.GONE
         binding.btnExtractAgain.setOnClickListener {
             toast("추출 다시하기")
         }
