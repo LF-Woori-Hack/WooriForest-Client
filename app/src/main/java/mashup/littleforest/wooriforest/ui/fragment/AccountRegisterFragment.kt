@@ -3,6 +3,8 @@ package mashup.littleforest.wooriforest.ui.fragment
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
 import mashup.littleforest.wooriforest.R
@@ -19,24 +21,48 @@ class AccountRegisterFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initSpinner()
         initButton()
+    }
+
+    private var agency = 1
+
+    private fun initSpinner() {
+        //1-SKT, 2-KT, 3-LGU+, 5-SKT(알뜰폰), 6-KT(알뜰폰), 7-LGU+(알뜰폰)
+
+        val items = arrayOf("SKT", "KT", "LGU+", "SKT(알뜰폰)", "KT(알뜰폰)", "LGU+(알뜰폰)")
+        val myAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, items)
+
+        binding.spinner.adapter = myAdapter
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
+                agency = when (position) {
+                    0 -> 1
+                    1 -> 2
+                    2 -> 3
+                    3 -> 5
+                    4 -> 6
+                    5 -> 7
+                    else -> 1
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
     }
 
     private fun initButton() {
         binding.btnOk.setOnClickListener {
-
-            val agency = binding.etNewsAgency.text.toString()
             val phoneNumber = binding.etPhoneNumber.text.toString()
             val name = binding.etName.text.toString()
             val registerNumber1 = binding.etRegister1.text.toString()
             val registerNumber2 = binding.etRegister2.text.toString()
 
-            Dlog.d("$agency : $phoneNumber / $name / $registerNumber1-$registerNumber2")
-            if (TextUtils.isEmpty(agency)) {
-                //1-SKT, 2-KT, 3-LGU+, 5-SKT(알뜰폰), 6-KT(알뜰폰), 7-LGU+(알뜰폰)
-                binding.etNewsAgency.error = "통신사를 입력해 주세요."
-                return@setOnClickListener
-            }
+            Dlog.d("$agency / $phoneNumber / $name / $registerNumber1-$registerNumber2")
+
             if (TextUtils.isEmpty(phoneNumber)) {
                 binding.etPhoneNumber.error = "전화번호를 입력해 주세요."
                 return@setOnClickListener
@@ -52,11 +78,11 @@ class AccountRegisterFragment
                 return@setOnClickListener
             }
 
-            connectAccount(1, phoneNumber, name, registerNumber1, registerNumber2)
+            connectAccount(phoneNumber, name, registerNumber1, registerNumber2)
         }
     }
 
-    private fun connectAccount(agency: Int, phoneNumber: String, name: String, birthday: String, rrno: String) {
+    private fun connectAccount(phoneNumber: String, name: String, birthday: String, rrno: String) {
         PrefUtil.put(PrefUtil.PREF_USER_NAME, name)
 
         fetchTest {

@@ -54,29 +54,26 @@
                     android:textSize="18dp" />
             </LinearLayout>
 
-            <FrameLayout
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <TextView
+                    style="@style/TextStyle.Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="통신사"
+                    android:textColor="@color/black" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="4dp"
                     android:layout_width="match_parent"
-                    android:layout_height="66dp"
-                    android:layout_marginTop="12dp">
-
-                    <EditText
-                        android:id="@+id/et_news_agency"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="통신사"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </FrameLayout>
+                    android:background="@drawable/drawable_rect_stroke_black_rad_10" />
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
