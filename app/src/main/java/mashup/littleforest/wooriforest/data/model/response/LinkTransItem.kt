@@ -7,11 +7,11 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class LinkTransItem(
     @SerializedName("id")
-    val id: String?,
+    val id: String? = "",
     @SerializedName("title")
-    val title: String?,
+    val title: String? = "",
     @SerializedName("content")
-    val content: String?,
+    val content: String? = "",
     @SerializedName("iconImage")
     val iconImage: String? = "",
     @SerializedName("memberCount")

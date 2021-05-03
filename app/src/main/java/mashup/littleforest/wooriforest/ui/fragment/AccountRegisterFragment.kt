@@ -10,7 +10,6 @@ import com.tistory.blackjinbase.util.Dlog
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.data.model.request.LinkTransRequest
-import mashup.littleforest.wooriforest.data.model.response.LinkTransItem
 import mashup.littleforest.wooriforest.databinding.FragmentAccountRegisterBinding
 import mashup.littleforest.wooriforest.utils.PrefUtil
 
@@ -85,7 +84,7 @@ class AccountRegisterFragment
     private fun connectAccount(phoneNumber: String, name: String, birthday: String, rrno: String) {
         PrefUtil.put(PrefUtil.PREF_USER_NAME, name)
 
-        fetchTest {
+        /*fetchTest {
             val sample = mutableListOf(
                 LinkTransItem(
                     id = "1",
@@ -108,7 +107,7 @@ class AccountRegisterFragment
             navigate(direction)
         }
 
-        return
+        return*/
 
         val request = LinkTransRequest(
             carrier = agency,

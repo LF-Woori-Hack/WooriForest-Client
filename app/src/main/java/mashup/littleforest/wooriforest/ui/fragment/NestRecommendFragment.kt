@@ -6,7 +6,6 @@ import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
-import mashup.littleforest.wooriforest.data.model.response.LinkTransItem
 import mashup.littleforest.wooriforest.databinding.FragmentNestRecommendBinding
 import mashup.littleforest.wooriforest.ui.adapter.HobbyNestAdapter
 import mashup.littleforest.wooriforest.utils.PrefUtil
@@ -29,7 +28,7 @@ class NestRecommendFragment :
 
             binding.rvHobbyNest.adapter = hobbyNestAdapter
 
-            fetchTest {
+            /*fetchTest {
                 val sample = mutableListOf(
                     LinkTransItem(
                         id = "1",
@@ -62,7 +61,7 @@ class NestRecommendFragment :
                 )
                 hobbyNestAdapter.replaceAll(sample)
             }
-            return@let
+            return@let*/
 
             fetch {
                 val result = wooriApi.nestDetail(id)
@@ -87,13 +86,15 @@ class NestRecommendFragment :
                 return@setOnClickListener
             }
 
-            fetchTest {
+            /*fetchTest {
                 val direction = NestRecommendFragmentDirections.actionNestRecommendFragmentToNestCompleteFragment(title, item)
                 navigate(direction)
             }
-            return@setOnClickListener
+            return@setOnClickListener*/
 
             fetch {
+                val id = item.id ?: return@fetch
+
                 val result = wooriApi.join(id)
                 Dlog.d("result : $result")
                 val direction = NestRecommendFragmentDirections.actionNestRecommendFragmentToNestCompleteFragment(title, item)

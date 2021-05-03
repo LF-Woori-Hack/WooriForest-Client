@@ -1,6 +1,7 @@
 package mashup.littleforest.wooriforest.ui.fragment
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
@@ -10,6 +11,7 @@ import mashup.littleforest.wooriforest.WoorisForestApplication
 import mashup.littleforest.wooriforest.base.WFFragment
 import mashup.littleforest.wooriforest.data.model.request.LoginRequest
 import mashup.littleforest.wooriforest.databinding.FragmentLoginBinding
+import mashup.littleforest.wooriforest.utils.PrefUtil
 
 class LoginFragment : WFFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
@@ -18,12 +20,27 @@ class LoginFragment : WFFragment<FragmentLoginBinding>(R.layout.fragment_login) 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initButton()
+
+        //check home
+        val isMain = PrefUtil.get(PrefUtil.PREF_USER_MAIN, false)
+        if (isMain) {
+            goToHome()
+            return
+        }
+
+        //check auto login
+        val accessToken = PrefUtil.get(PrefUtil.PREF_ACCESS_TOKEN, "")
+        Dlog.d("accessToken : $accessToken")
+        if (TextUtils.isEmpty(accessToken).not()) {
+            goToHobbyCheck()
+            return
+        }
     }
 
     private fun initButton() {
         binding.btnKakaoLogin.setOnClickListener {
-            fetchTest { goToHobbyCheck() }
-            return@setOnClickListener
+            //fetchTest { goToHobbyCheck() }
+            //return@setOnClickListener
             kakaoLogin()
         }
     }
@@ -62,5 +79,9 @@ class LoginFragment : WFFragment<FragmentLoginBinding>(R.layout.fragment_login) 
 
     private fun goToHobbyCheck() {
         navigate(R.id.action_loginFragment_to_hobbyCheckFragment)
+    }
+
+    private fun goToHome() {
+        navigate(R.id.action_global_homeFragment)
     }
 }

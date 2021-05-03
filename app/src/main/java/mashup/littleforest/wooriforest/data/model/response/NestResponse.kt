@@ -7,16 +7,13 @@ data class NestResponse(
     @SerializedName("query")
     val query: String?,
     @SerializedName("goalAmount")
-    val goalAmount: String?,
+    val goalAmount: Long?,
     @SerializedName("comment")
     val comment: String?,
     @SerializedName("currentAmount")
-    val currentAmount: String?,
+    val currentAmount: Long?,
     @SerializedName("monthlyPayment")
-    val monthlyPayment: String?,
+    val monthlyPayment: Long?,
     @SerializedName("cheeringCount")
-    val cheeringCount: String?,
-
-    //local
-    val image: String = ""
+    val cheeringCount: Int?
 )

@@ -37,6 +37,7 @@ class NestCompleteFragment :
 
     private fun initButton() {
         binding.btnOk.setOnClickListener {
+            PrefUtil.put(PrefUtil.PREF_USER_MAIN, true)
             navigate(R.id.action_global_homeFragment)
         }
     }

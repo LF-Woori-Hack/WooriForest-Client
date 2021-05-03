@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiProvider {
 
-    private const val baseUrl = "13.125.150.163"
+    private const val baseUrl = "http://13.125.150.163:8080/"
 
     private const val naverBaseUrl = "https://openapi.naver.com/v1/"
 

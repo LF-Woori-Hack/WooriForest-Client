@@ -9,11 +9,10 @@ import com.tistory.blackjinbase.ext.toast
 import com.tistory.blackjinbase.util.Dlog
 import mashup.littleforest.wooriforest.R
 import mashup.littleforest.wooriforest.base.WFFragment
-import mashup.littleforest.wooriforest.data.CashData
 import mashup.littleforest.wooriforest.data.model.request.JoinRequest
-import mashup.littleforest.wooriforest.data.model.response.NestResponse
 import mashup.littleforest.wooriforest.databinding.FragmentPocketMoneyRegisterBinding
 import mashup.littleforest.wooriforest.ui.model.ItemShop
+import mashup.littleforest.wooriforest.utils.PrefUtil
 
 class PocketMoneyRegisterFragment
     : WFFragment<FragmentPocketMoneyRegisterBinding>(R.layout.fragment_pocket_money_register) {
@@ -85,25 +84,27 @@ class PocketMoneyRegisterFragment
                 return@setOnClickListener
             }
 
-            fetchTest {
-                CashData.nestItem = NestResponse(
+            PrefUtil.put(PrefUtil.PREF_SHOP_ITEM_IMAGE, itemShop?.image ?: "")
+
+            /*fetchTest {
+                 CashData.nestItem = NestResponse(
                     query = goal,
-                    goalAmount = money,
+                    goalAmount = money.toLong(),
                     comment = promise,
-                    currentAmount = "70000",
-                    monthlyPayment = "10000",
-                    cheeringCount = "121",
+                    currentAmount = 0L,
+                    monthlyPayment = 10000L,
+                    cheeringCount = 121,
                     image = itemShop?.image ?: ""
                 )
 
                 val direction = HomeFragmentDirections.actionGlobalHomeFragment(true)
                 navigate(direction)
             }
-            return@setOnClickListener
+            return@setOnClickListener*/
 
             val request = JoinRequest(
                 query = goal,
-                goalAmount = money,
+                goalAmount = money.toLong(),
                 comment = promise
             )
 

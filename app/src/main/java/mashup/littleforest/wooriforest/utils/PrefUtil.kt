@@ -15,6 +15,10 @@ object PrefUtil {
     const val PREF_ACCESS_TOKEN = "access_token"
     //const val PREF_REFRESH_TOKEN = "refresh_token"
 
+    //home 화면을 한번이라도 봤을 경우
+    const val PREF_USER_MAIN = "main"
+
+    const val PREF_SHOP_ITEM_IMAGE = "shop_item_image"
     const val PREF_USER_NAME = "user_name"
 
     fun init(context: Context) {
